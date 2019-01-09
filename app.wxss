@@ -1,0 +1,5 @@
+/**app.wxss**/
+page{
+  font-size: 32rpx;
+  font-family: NSimSun;
+}

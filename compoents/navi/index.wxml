@@ -1,0 +1,6 @@
+<!--compoents/navi/index.wxml-->
+<view class='container'>
+  <image class='img' bindtap='onNext' src='{{isLast?nextSrcdis:nextSrc}}'/>
+  <text class='title'>{{title}}</text>
+  <image class='img' bindtap='onPrevious' src='{{isFrist?previousSrcdis:previousSrc}}'/>
+</view>
