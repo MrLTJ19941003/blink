@@ -21,17 +21,7 @@ Page({
    */
   onLoad: function (options) {
     this.getAuthorized()
-    const bookFavorPromise = bookModel.getBookFavorCount()
-    bookFavorPromise.then(res=>{
-      this.setData({
-        favorCount:res.count
-      })
-    })
-    classicModel.getMyFavor(res=>{
-      this.setData({
-        classicFavors: res
-      })
-    })
+    this._initData()
   },
   /**
    * 判断是否需要授权，如果已经授权直接获取用户信息
@@ -57,6 +47,14 @@ Page({
    */
   onGetUserInfo(event) {
     let userInfo = event.detail.userInfo
+    wx.login({
+      success(res){
+        if (res.code) {
+          console.log(res.code)
+          console.log(userInfo)
+        }
+      }
+    })
     if (userInfo) {
       this.setData({
         authorized: true,
@@ -87,7 +85,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this._initData()
   },
 
   /**
@@ -123,6 +121,20 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  _initData(){
+    const bookFavorPromise = bookModel.getBookFavorCount()
+    bookFavorPromise.then(res => {
+      this.setData({
+        favorCount: res.count
+      })
+    })
+    classicModel.getMyFavor(res => {
+      this.setData({
+        classicFavors: res
+      })
+    })
   }
   
 })
