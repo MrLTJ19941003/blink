@@ -140,12 +140,11 @@ Page({
    * 获取期刊点赞信息
    */
   _getLikeFavor(id,type){
-    const likeFavorPromise = likeModel.getLikeFavor(id,type)
-    likeFavorPromise.then(res=> {
-        this.setData({
-          like: res.like_status,
-          count: res.fav_nums
-        })
+    likeModel.getLikeFavor(id, type, res => {
+      this.setData({
+        like: res.like_status,
+        count: res.fav_nums
+      })
     })
   }
 })
