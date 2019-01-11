@@ -1,8 +1,8 @@
 <!--pages/book/book.wxml-->
 
-<view class='container'>
+<view wx:if='{{!searching}}' class='container'>
   <view class='header'>
-    <view class='box' bindtap=''>
+    <view class='box' bindtap='onSearching'>
       <image src='/images/icon/search.png' />
       <text>搜索书籍</text>
     </view>
@@ -10,13 +10,14 @@
   <view class='sub-container'>
     <image class='head-img' src='/images/book/quality.png'/>
     <view class='sub-list'>
-      <block wx:for='{{books}}'>
+      <block wx:key="" wx:for='{{books}}'>
         <l-book book='{{item}}'/>
       </block>
     </view>
   </view>
 </view>
 
+<l-search more='{{more}}' hotTags='{{hotTags}}' bind:cancel='onCancel' wx:if='{{searching}}'/>
 <!-- <block wx:for='{{books}}'>
   <l-book book='{{item}}'/>
 </block> -->

@@ -41,6 +41,35 @@ class ClassicModel extends HTTP{
     }
   }
   /**
+   * 
+   */
+  getMyFavor(sCallback, start=1,count=20){
+    this.request({
+      url: `/classic/favor`,
+      data:{
+        start : start,
+        count : count
+      },
+      success: (res) => {
+        sCallback(res)
+      }
+    })
+    
+  }
+  /**
+   * 
+   */
+  getClassicDetail(type,id,sCallback) {
+    this.request({
+      url: `/classic/${type}/${id}`,
+      success: (res) => {
+        sCallback(res)
+      }
+    })
+
+  }
+
+  /**
    * 判断是否是第一页
    */
   isFirst(index){

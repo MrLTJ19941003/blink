@@ -1,1 +1,209 @@
 /* pages/book_detail/book_detail.wxss */
+.container{
+  background-color: #f5f5f5;
+  width: 100%
+}
+.head{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+.head image{
+  width:200rpx;
+  height:300rpx;
+  box-shadow: 2px 2px 3px #e3e3e3;
+}
+.title{
+  color: #2f2f2f;
+  margin-top: 20rpx;
+  font-weight: 600;
+  font-size: 38rpx;
+}
+.author{
+  font-size: 28rpx;
+  color:#999;
+}
+
+.sub-container{
+  width: 690rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+  padding: 30rpx;
+  background-color: #fff;
+}
+
+.headline{
+  font-weight: 600;
+  font-size: 30rpx;
+  margin-bottom: 20rpx;
+  color: #2f2f2f;
+}
+
+.tag-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.tag-list l-tag{
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+}
+.num{
+  margin-left: 10rpx;
+  font-size: 22rpx;
+  color:#aaa;
+}
+/* 子元素 选择器 后代选择器 此处使用的是选择器 后代选择器是不加 > 符号的  */
+/* 不能直接给自定义组件设置背景颜色，需要设置自定义组件的内置组件 但是这种方式违反了组件封装的原则*/
+/* .tag-list > l-tag:nth-child(1) > view{
+  background-color: #fffbdd;
+} */
+
+/* .tag-list > l-tag:nth-child(2) > view{
+  background-color: #eefbff;
+} */
+
+/* 开源组件 UI */
+/* 默认样式 自定义样式 */
+/* 通过外部直接hack设置样式改变组件里面样式是违反组件封装原则的 */
+/* 没有违反组件封装原则 */
+/* 组件属性 slot插槽 */
+.ex-tag1{
+  background-color: #fffbdd !important;
+}
+
+.ex-tag2{
+  background-color: #eefbff !important;
+}
+
+.content{
+  text-indent: 58rpx;
+  font-weight: 500;
+}
+
+.detail-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 100rpx;
+  font-size:28rpx;
+  color: #666;
+}
+
+.vertical{
+  display: flex;
+  flex-direction: column;
+  margin-left: 30rpx;
+}
+
+.description{
+  color: #999;
+  margin-left:10rpx;
+}
+
+.post-container{
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  width:690rpx;
+  box-shadow: 1px -1px 1px #e3e3e3;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+
+.post-fake{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 60rpx;
+  width: 460rpx;
+  border: 1px solid #999;
+  border-radius: 15px;
+  font-size: 22rpx;
+  padding-left: 20rpx;
+}
+
+.like-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nat-like{
+  margin-right: 30rpx;
+}
+
+.postting-container{
+  bottom: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
+  z-index: 999;
+}
+
+.post-header{
+  width: 100%;
+  border-bottom: 1px solid #f5f5f5;
+  border-top: 1px solid #f5f5f5;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cancel{
+  color: #666;
+}
+
+.post-header text{
+ padding: 25rpx;
+}
+
+.post-header>text:first-child {
+  font-size: 28rpx;
+  color:#bbb;
+}
+
+.postting-container .tag-list{
+  width: 690rpx;
+  padding: 40rpx 30rpx 0 30rpx;
+}
+
+.post{
+  width: 690rpx;
+  margin: 30rpx auto;
+  height: 56rpx;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding-left: 25rpx;
+}
+
+.shadow{
+  color:#999;
+}
+
+.share-btn{
+  margin-top:28rpx;
+  margin-left:10rpx;
+}
+
+.share{
+  /* padding:10rpx; */
+  width:40rpx;
+  height:40rpx;
+}

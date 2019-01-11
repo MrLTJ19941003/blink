@@ -1,2 +1,79 @@
 <!--pages/book_detail/book_detail.wxml-->
-<text>pages/book_detail/book_detail.wxml</text>
+<!-- 使用微信小程序的wxs内置脚本编写的过滤工具类 -->
+<wxs src="../../utils/filter.wxs" module="util" />
+
+<view class='container'>
+  <view class='head'>
+    <image src='{{bookDetail.image}}'/>
+    <text class='title'>{{bookDetail.title}}</text>
+    <text class='author'>{{bookDetail.author}}</text>
+  </view>
+  <view class='sub-container'>
+    <text class='headline'>短评</text>
+    <text wx:if='{{comment.comments==false}}' class='shadow'>还没有短评</text>
+    <view class='tag-list'>
+      <block wx:for='{{util.limit(comment.comments,15)}}' wx:key=''>
+      <!-- index==0?"ex-tag1":"" || index==1?"ex-tag2":"" -->
+        <l-tag tag-class='{{util.isExTag(index)}}' text='{{item.content}}'>
+          <text class='num' slot='after'>{{'+' + item.nums}}</text>
+        </l-tag>
+      </block>
+    </view>
+  </view>
+
+  <view class='sub-container'>
+    <text class='headline'>内容简介</text>
+    <text class='content' decode='{{true}}'>{{util.swichStr(bookDetail.summary)}}</text>
+  </view>
+
+   <view class='sub-container'>
+    <text class='headline'>书本信息</text>
+    <view class='detail-container'>
+      <view class='vertical description'>
+        <text>出版社</text>
+        <text>出版年</text>
+        <text>页数</text>
+        <text>定价</text>
+        <text>装帧</text>
+      </view>
+      <view class='vertical'>
+        <text>{{bookDetail.publisher}}</text>
+        <text>{{bookDetail.pubdate}}</text>
+        <text>{{bookDetail.pages}}</text>
+        <text>{{bookDetail.price}}</text>
+        <text>{{bookDetail.binding}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='post-container' wx:if='{{!postting}}'>
+  <view class='post-fake' bindtap='onFakePost'>
+    <text>输入短评</text>
+  </view>
+  <view class='like-container'>
+   <l-like class='nat-like' bind:like='onLike' count='{{likeCount}}' isLike='{{likeStatus}}' />
+   <l-button class="share-btn" opentype="share">
+      <image class="share" slot="img" src="/images/icon/share.png" />
+    </l-button>
+  </view>
+</view>
+
+<l-mask wx:if='{{postting}}'/>
+
+<view class='postting-container' wx:if='{{postting}}'>
+  <view class='post-header'>
+    <text wx:if='{{comment.comments==true}}'>仅可点击标签+1</text>
+    <text wx:else>暂无短评</text>
+    <text class='cancel' bindtap='onCancel'>取消</text>
+  </view>
+  <view class='tag-list'>
+    <block wx:for='{{util.limit(comment.comments,3)}}' wx:key=''>
+      <!-- index==0?"ex-tag1":"" || index==1?"ex-tag2":"" -->
+      <l-tag bind:click='onPostComment' tag-class='{{util.isExTag(index)}}' text='{{item.content}}'>
+        <text class='num' slot='after'>{{'+' + item.nums}}</text>
+      </l-tag>
+    </block>
+  </view>
+  <input bindconfirm='onPostComment' class='post' placeholder='短评最多12个字'></input>
+</view>

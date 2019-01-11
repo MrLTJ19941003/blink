@@ -1,0 +1,7 @@
+<!--compoents/tag/index.wxml-->
+<view class='container tag-class' bindtap='onClick'>
+  <slot name='before'></slot>
+  <text>{{text}}</text>
+  <!-- slot 插槽 -->
+  <slot name='after'></slot>
+</view>

@@ -1,0 +1,4 @@
+<!--compoents/bottomLine/index.wxml-->
+<view class='container'>
+  <text>{{content}}</text>
+</view>

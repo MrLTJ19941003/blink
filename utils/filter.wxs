@@ -1,0 +1,33 @@
+/**
+ * 字符串转换过滤器（wxs脚本）
+ */
+var swichStr = function(text) {
+  if(!text){
+    return
+  }
+  var reg = getRegExp('\\\\n','g')
+  return text.replace(reg,'\n&nbsp;&nbsp;')
+}
+/**
+ * 判断标签背景颜色渲染的过滤器（wxs脚本）
+ */
+var isExTag = function (index) {
+  if(index==0)
+    return 'ex-tag1'
+  else if (index==1)
+    return 'ex-tag2'
+  else
+    return ''
+}
+
+var limit = function(array,length){
+  return array.slice(0,length)
+}
+/**
+ * 对过滤器进行导出
+ */
+module.exports = {
+  swichStr: swichStr,
+  isExTag : isExTag,
+  limit   : limit
+};

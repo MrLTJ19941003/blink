@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "l-tag":"/compoents/tag/index",
+    "l-like": "/compoents/like/index",
+    "l-mask": "/compoents/mask/index",
+    "l-button": "/compoents/images-button/index"
+  }
 }

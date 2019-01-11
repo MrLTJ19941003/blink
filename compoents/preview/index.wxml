@@ -1,0 +1,9 @@
+<!--compoents/preview/index.wxml-->
+<view class='container' bindtap='onClick'>
+  <view class='header-container'>
+    <l-tag text='{{typeText}}' tag-class='tag'/>
+    <l-like class="like" isLike='{{classicFavor.like_status}}' count='{{classicFavor.fav_nums}}'/>
+  </view>
+  <image class="{{classic.type==200?'music-img':'other-img'}}" src='{{classicFavor.image}}'></image>
+  <text class='text'>{{classicFavor.content}}</text>
+</view>

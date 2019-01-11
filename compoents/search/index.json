@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "l-tag": "/compoents/tag/index",
+    "l-book": "/compoents/book/index",
+    "l-loading": "/compoents/loading/index",
+    "l-bottomLine": "/compoents/bottomLine/index"
+  }
+}

@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -30,12 +30,30 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
 					"name": "classic",
-					"pathName": "pages/classic/classic"
+					"pathName": "pages/classic/classic",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "book_detail",
+					"pathName": "pages/book_detail/book_detail",
+					"query": "bid=7"
+				},
+				{
+					"id": -1,
+					"name": "book",
+					"pathName": "pages/book/book",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/my"
 				}
 			]
 		}

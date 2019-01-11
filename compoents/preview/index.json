@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "l-tag": "/compoents/tag/index",
+    "l-like": "/compoents/like/index"
+  }
+}

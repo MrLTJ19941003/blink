@@ -5,6 +5,7 @@
     "l-music": "/compoents/classic/music/index",
     "l-essay": "/compoents/classic/essay/index",
     "l-epsoide": "/compoents/epsoide/index",
-    "l-navi": "/compoents/navi/index"
+    "l-navi": "/compoents/navi/index",
+    "l-button": "/compoents/images-button/index"
   }
 }

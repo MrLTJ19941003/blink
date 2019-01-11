@@ -2,7 +2,13 @@
 <view class='container'>
   <view class='nat-header'>
     <l-epsoide class='nat-espoide' index='{{classicData.index}}'/>
-    <l-like class='nat-like' bind:like='onLike' count='{{count}}' isLike='{{like}}' />
+    <view class='like-container'>
+      <l-like class='nat-like' bind:like='onLike' count='{{count}}' isLike='{{like}}' />
+      <l-button class="share-btn" opentype="share">
+        <image class="share" slot="img" src="/images/icon/share.png" />
+      </l-button>
+    </view>
+    
   </view>
   <l-movie isShow='{{classicData.type != 100}}' img='{{classicData.image}}' content='{{classicData.content}}'/>
   <l-music wx:if='{{classicData.type == 200}}' img='{{classicData.image}}' content='{{classicData.content}}' 

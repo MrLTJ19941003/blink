@@ -1,8 +1,11 @@
 // pages/classic/classic.js
 import { ClassicModel} from '../../models/classic.js'
+import { ClassicModelP } from '../../models/classicPromise.js'
 import { LikeModel } from '../../models/like.js'
 let classic = new ClassicModel()
 let likeModel = new LikeModel()
+//使用promise重构了ClassicModel, 由于 getLatest 、getClassic两个方法的回调函数中耦合了一些数据操作，数据操作不宜放入页面js中处理，所以此classicP中不重构 getLatest 、getClassic两个方法
+let classicP = new ClassicModelP()
 /**
  * 期刊页面
  */
@@ -23,11 +26,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    classic.getLatest((res) => {
-      //this._getLikeFavor(res.id,res.type)
-      console.log(res)
+    this._getLatest()
+  },
+  /**
+   * 根据type和id获取期刊详情
+   */
+  _getClassicDetail(type,id){
+    classicP.getClassicDetail(type, id)
+      .then(res=>{
+        this.setData({
+          classicData: res,
+          like: res.like_status,
+          count: res.fav_nums
+        })
+      })
+  },
+  /**
+   * 获取最新一期期刊详情
+   */
+  _getLatest(){
+    classic.getLatest(res=>{
       this.setData({
-        classicData:res,
+        classicData: res,
         like: res.like_status,
         count: res.fav_nums
       })
@@ -102,7 +122,7 @@ Page({
     this._getClassic('next')
   },
   /**
-   * 
+   * 由于上一期和下一期大部分业务都一样，将公共部分提取出来当做参数
    */
   _getClassic:function(nextOrPreivous){
     let index = this.data.classicData.index
@@ -120,11 +140,12 @@ Page({
    * 获取期刊点赞信息
    */
   _getLikeFavor(id,type){
-    likeModel.getLikeFavor(id,type,(res)=>{
-      this.setData({
-        like: res.like_status,
-        count: res.fav_nums
-      })
+    const likeFavorPromise = likeModel.getLikeFavor(id,type)
+    likeFavorPromise.then(res=> {
+        this.setData({
+          like: res.like_status,
+          count: res.fav_nums
+        })
     })
   }
 })

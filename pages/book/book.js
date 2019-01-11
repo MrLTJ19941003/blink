@@ -1,9 +1,10 @@
 // pages/book/book.js
-import {
-  BookModel
-} from '../../models/book.js'
+import { BookModel } from '../../models/book.js'
+import { KeywordModel } from '../../models/keyword.js'
+import { random } from '../../utils/common.js'
 
 const bookModel =new BookModel()
+const keywordModel = new KeywordModel()
 /**
  * 图书页面
  */
@@ -13,21 +14,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    books:[]
+    books:[],
+    searching:false,
+    hotTags:[],
+    more:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let hostlist = bookModel.getHostList()
-    hostlist.then(
-      res => {
+    const hostlist = bookModel.getHostList()
+    const hotTagsPremise = keywordModel.getHot()
+
+    Promise.all([hostlist, hotTagsPremise])
+      .then(res => {
+        console.log(res)
         this.setData({
-          books:res
+          books: res[0],
+          hotTags:res[1].hot
         })
-      }
-    )
+    })
   },
 
   /**
@@ -77,5 +84,27 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  /**
+   * 搜索按钮事件
+   */
+  onSearching:function(event){
+    this.setData({
+      searching:true
+    })
+    
+  },
+  /**
+   * 搜索关闭按钮事件
+   */
+  onCancel: function (event) {
+    this.setData({
+      searching: false
+    })
+  },
+  onReachBottom:function(){
+    this.setData({
+      more: random(16)
+    })
   }
 })

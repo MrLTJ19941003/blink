@@ -1,1 +1,86 @@
 /* pages/my/my.wxss */
+.container{
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+.bg{
+  width:750rpx;
+  height:574rpx;
+}
+
+.about-container{
+  padding: 0 100rpx;
+  width:550rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position:absolute;
+  top:440rpx;
+}
+.book-num{
+  font-size: 28rpx;
+  color: #000;
+}
+.about-us{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-us image{
+  width:34rpx;
+  height:34rpx;
+}
+
+.description{
+  font-size:24rpx;
+  color:#999999;
+}
+
+.avatar-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar{
+  width:120rpx;
+  height:120rpx;
+  border-radius: 50%;
+  /* margin-bottom: 10rpx; */
+}
+
+.avatar-position{
+  position:absolute; 
+  top:255rpx;
+}
+
+.txt-container{
+  margin-top:20rpx;
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.txt-container image{
+  width: 110rpx;
+  height: 50rpx;
+}
+
+.favors-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.favors{
+  padding: 15rpx;
+}
